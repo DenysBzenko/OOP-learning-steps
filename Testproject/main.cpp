@@ -35,18 +35,46 @@ public:
 // create a class family
 class Family {
 private:
+    Human Husband;
+    Human Wife;
+    vector<Human> child;
+public:
+
+    
+    Family(const Human& Husband, const Human& Wife, const vector<Human>& children) : Husband(Husband), Wife(Wife), child(child) {}
+
+    void UserInterface() const{
+        cout << "Husband:" << endl;
+        cout << "Height:" << Husband.getHeight() << endl;
+        cout << "Name:" << Husband.getName() << endl;
+        cout << "Surnname:" << Husband.getSurname() << endl;
+        cout << "Wife:" << endl;
+        cout << "Height:" << Wife.getHeight() << endl;
+        cout << "Name:" << Wife.getName() << endl;
+        cout << "Surnname:" << Wife.getSurname() << endl;
+
+        
+        cout << "Name of our Parants:" << endl;
+        cout << "MOM:\n" << Wife.getName() << endl;
+        cout << "PAPA:\n" << Husband.getName() << endl;
+    }
+
+
+   
 };
+
+
 int main() {
     // TODO
     // Create 2 different humans
     Human Man(86.8, "ALEX", "DAO");
-    Human Woman(43.6, "Alice", "Whiteman");
+    Human Woman(43.6, "Alice", "DAO");
 
     int number;
     cin >> number;
 
-    // an array of humans
-    vector<Human> people;
+    // an array of child
+    vector<Human> child;
     for (int i = 0; i < number; ++i) {
         float height;
         string Name, Surnname;
@@ -56,23 +84,19 @@ int main() {
         cin >> Name;
         cout << "enter surnname:\n " << i + 1 << ":";
         cin >> Surnname;
-        people.push_back(Human(height, Name, Surnname));
+        child.push_back(Human(height, Name, Surnname));
     }
 
-    for (const auto& peoples : people) {
-        cout << "height: \n " << peoples.getHeight() << endl;
-        cout << "Name:\n" << peoples.getName() << endl;
-        cout << "Surnname:\n" << peoples.getSurname() << endl;
-
+    cout << "Child" << endl;
+    for (const auto& child : child)
+    {
+        cout << "Height: " << child.getHeight() << endl;
+        cout << "Name: " << child.getName() << endl;
+        cout << "Surname: " << child.getSurname() << endl;
     }
 
-    // Print info about humans
-    cout << "Man height \n " << Man.getHeight() << endl;
-    cout << "Man Name\n" << Man.getName() << endl;
-    cout << "Man Surnname\n" << Man.getSurname() << endl;
-    cout << "Woman height\n" << Woman.getHeight() << endl;
-    cout << "Woman Name\n" << Woman.getName() << endl;
-    cout << "Woman Surnname\n" << Woman.getSurname() << endl;
+    Family myFamily(Man, Woman, child);
+    myFamily.UserInterface();
 
     return 0;
 
