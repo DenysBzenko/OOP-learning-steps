@@ -62,42 +62,39 @@ public:
 
    
 };
+class FamilyTester {
+public:
+    static void testFamily() {
+        
+        Human Man(86.8, "ALEX", "DAO");
+        Human Woman(43.6, "Alice", "DAO");
 
+        int number;
+        cout << "Enter the number of children: ";
+        cin >> number;
+
+        
+        vector<Human> child;
+        for (int i = 0; i < number; ++i) {
+            float height;
+            string Name, Surnname;
+            cout << "enter Height:\n " << i + 1 << ":";
+            cin >> height;
+            cout << "enter Name:\n" << i + 1 << ":";
+            cin >> Name;
+            cout << "enter surname:\n " << i + 1 << ":";
+            cin >> Surnname;
+            child.push_back(Human(height, Name, Surnname));
+        }
+
+        Family myFamily(Man, Woman, child);
+        myFamily.UserInterface();
+    }
+};
 
 int main() {
-    // TODO
-    // Create 2 different humans
-    Human Man(86.8, "ALEX", "DAO");
-    Human Woman(43.6, "Alice", "DAO");
 
-    int number;
-    cin >> number;
-
-    // an array of child
-    vector<Human> child;
-    for (int i = 0; i < number; ++i) {
-        float height;
-        string Name, Surnname;
-        cout << "enter Height:\n " << i + 1 << ":";
-        cin >> height;
-        cout << "enter Name:\n" << i + 1 << ":";
-        cin >> Name;
-        cout << "enter surnname:\n " << i + 1 << ":";
-        cin >> Surnname;
-        child.push_back(Human(height, Name, Surnname));
-    }
-
-    cout << "Child" << endl;
-    for (const auto& child : child)
-    {
-        cout << "Height: " << child.getHeight() << endl;
-        cout << "Name: " << child.getName() << endl;
-        cout << "Surname: " << child.getSurname() << endl;
-    }
-
-    Family myFamily(Man, Woman, child);
-    myFamily.UserInterface();
-
+    FamilyTester::testFamily();
     return 0;
 
 };
